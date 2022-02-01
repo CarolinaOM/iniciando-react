@@ -1,53 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 
-// function Helloworld(props){
-//   console.log(props)
-//   return(
-//     <div id="hello">
-//       <h3>{props.subtitle}</h3>
-//       {props.mytext}
-//     </div>
-//   )
-// }
+import tasks from './sample/tasks.json';
 
-class Helloworld extends React.Component {
+import Tasks from './components/Tasks';
+
+class App extends Component{
 
   state = {
-    show: true
-  }
-
-  toggleShow = ()=> {
-    this.setState({show: !this.state.show})
+    tasks : tasks
   }
 
   render(){
-    if(this.state.show){
-      return(
-      <div id="hello">
-      <h3>{this.props.subtitle}</h3>
-      {this.props.mytext}
-      <button onClick={this.toggleShow}>Cambiar estado</button>
-      </div>
-      )
-    }else{
-      return <h1>
-        No existen elementos
-        <button onClick={this.toggleShow}>
-          Toggle Show
-        </button>
-      </h1>
-    }
+    return <div>
+      <Tasks tasks={this.state.tasks}/>
+    </div>
   }
 }
-function App() {
-  return (
-    <div>This is my componet: 
-      <Helloworld mytext="Hello" subtitle="loremp" /> 
-      <Helloworld mytext="Hola" subtitle="loremp 2" /> 
-      <Helloworld mytext="Hello!" subtitle="loremp 3" /> 
-    </div>
-  );
-}
+
+
 
 export default App;
